@@ -2,3 +2,4 @@ flask
 numpy
 easyocr
 opencv-python-headless
+translate

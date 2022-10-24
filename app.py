@@ -4,11 +4,13 @@ import json
 import easyocr
 import cv2
 import numpy as np
+from translate import Translator
 
 app = Flask(__name__)
 
 count = 0
 if count == 0:
+    translator = Translator(from_lang="en", to_lang="ur")
     reader = easyocr.Reader(['en'], gpu=False)
     count += 1
 
@@ -32,7 +34,8 @@ def processing(image):
             credential.append(text[i])
             break
     if len(credential) == 2 or len(credential) == 3:
-        data = {'Name': credential[0], 'ID Num': credential[-1]}
+        word = translator.translate(credential[0])
+        data = {'Name': credential[0], 'Urdu_Name': word, 'ID Num': credential[-1]}
     else:
         data = 'None'
 
