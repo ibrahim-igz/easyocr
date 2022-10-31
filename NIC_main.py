@@ -10,7 +10,7 @@ if count == 0:
     #     'translate.google.co.kr',
     # ])
     translator = Translator(from_lang="en", to_lang="ur")
-    reader = easyocr.Reader(['en'], gpu=True)
+    reader = easyocr.Reader(['en'], gpu=False)
     count += 1
 
 
